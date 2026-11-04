@@ -1,0 +1,54 @@
+name: Update participation README
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+  schedule:
+    - cron: '17,47 * * * *'
+permissions:
+  contents: write
+concurrency:
+  group: coding-grass-readme
+  cancel-in-progress: false
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Test calendar calculations
+        run: npm test
+      - name: Check Notion connection
+        id: config
+        env:
+          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+        run: |
+          if [ -n "$NOTION_TOKEN" ]; then
+            echo "enabled=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "enabled=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::Notion sync is waiting for NOTION_TOKEN. Rendering the existing snapshot."
+          fi
+      - name: Sync participation from Notion
+        if: steps.config.outputs.enabled == 'true'
+        env:
+          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+          NOTION_DATA_SOURCE_ID: 40c3a35c-b1a1-80fc-8706-000b241e5470
+        run: npm run sync
+      - name: Render README and SVG cards
+        run: npm run render
+      - name: Commit updated records
+        run: |
+          git add README.md assets/grass data/activity.json
+          if git diff --cached --quiet; then
+            echo "No record changes."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "참여 기록과 README 잔디 갱신"
+          git push origin HEAD:main

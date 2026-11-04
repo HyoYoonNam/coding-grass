@@ -1,34 +1,49 @@
 # Coding Grass
 
-노션에 기록한 문제와 참여자로 만드는 코딩 테스트 스터디 대시보드.
+함께 푼 문제, 꾸준히 쌓이는 기록.
 
-- 참여자별 주소와 마지막으로 선택한 참여자 기억
-- 최근 12주, 연간 잔디와 날짜별 문제 목록
-- 누적 풀이, 이번 달 풀이, 참여일, 현재 연속 기록, 최장 연속 기록
-- 유형별 분포, 모바일 화면, 키보드 접근 지원
+노션의 코딩 테스트 참여 기록을 모아 사람별 잔디로 보여줍니다.
 
-## 실행
+**4명**이 함께 풀어 온 **10개 문제**
 
-Node.js 22 이상, Python 3을 사용한다. 추가 패키지 설치는 필요 없다.
+기록 동기화 2026. 11. 04. 15:02 (서울 시간)
 
-```sh
-npm test
-npm run dev
-```
+## 함께 쌓은 잔디
 
-http://127.0.0.1:4173 에서 확인한다.
+칸 하나는 하루입니다. 같은 날 여러 문제에 참여할수록 초록색이 진해집니다.
 
-## 노션 동기화
+![ 루드비코의 최근 12주 잔디](assets/grass/member-266e2ba14556.svg)
 
-노션의 원본 문제 DB를 읽는다. 문제 날짜는 서울 시간대로 변환하고, 각 문제의 참여자마다 1회 집계한다. 미래 날짜는 집계에서 제외한다. 현재 연속 기록은 오늘 또는 어제까지 이어진 기록을 계산한다.
+![ 임현성의 최근 12주 잔디](assets/grass/member-624907909853.svg)
 
-1. 노션에서 읽기 권한을 가진 내부 연결을 생성한다.
-2. 원본 문제 DB를 해당 연결에 공유한다.
-3. GitHub 저장소 Settings → Secrets and variables → Actions에 `NOTION_TOKEN`을 등록한다.
-4. Actions의 **Sync and deploy Coding Grass**를 수동 실행한다.
+![ kcnsmoothie의 최근 12주 잔디](assets/grass/member-0eeeb72abd91.svg)
 
-이후 매시 17분과 47분에 동기화를 시도한다. 예약 실행과 Pages 반영에는 지연이 발생할 수 있다. 동기화 실패 시 배포를 중단해 마지막 정상 사이트를 유지한다. 토큰 설정 전 첫 배포는 초기 스냅샷을 사용하며, 자동 동기화는 아직 활성화되지 않은 상태다.
+![ 모아의 최근 12주 잔디](assets/grass/member-42425b1ff1ea.svg)
 
-토큰은 소스, 정적 파일, 브라우저에 포함하지 않는다. 공개 파일에는 닉네임, 문제 제목, 문제 링크, 유형, 날짜, 참여 정보만 저장한다. 페이지 본문과 이메일은 수집하지 않는다. 참여자 식별자는 노션 ID의 해시를 사용한다. 표시 이름은 `data/names.json`에서 지정할 수 있다.
+## 최근 푼 문제
 
-사용자가 노션 문제의 참여자를 수정하면 다음 동기화에 반영된다. 개인별 실제 풀이 날짜가 필요하면 원본 DB에 별도 풀이 기록이 필요하다.
+| 날짜 | 문제 | 참여자 |
+| --- | --- | --- |
+| 2026-11-03 | [단어 변환](https://school.programmers.co.kr/learn/courses/30/lessons/43163) | 루드비코 |
+| 2026-11-03 | [게임 맵 최단거리](https://school.programmers.co.kr/learn/courses/30/lessons/1844) | 루드비코, 임현성 |
+| 2026-11-02 | [네크워크](https://school.programmers.co.kr/learn/courses/30/lessons/43162) | 임현성, 루드비코 |
+| 2026-11-02 | [택배 상자 꺼내기](https://school.programmers.co.kr/learn/courses/30/lessons/389478) | 루드비코, 임현성 |
+| 2026-11-02 | [타겟 넘버](https://school.programmers.co.kr/learn/courses/30/lessons/43165) | 루드비코, 임현성 |
+| 2026-11-02 | [가장 많이 받은 선물](https://school.programmers.co.kr/learn/courses/30/lessons/258712) | 루드비코, 임현성 |
+| 2026-10-30 | [개인정보 수집 유효기간](https://school.programmers.co.kr/learn/courses/30/lessons/150370) | 루드비코, 임현성 |
+| 2026-10-29 | [공원산책](https://school.programmers.co.kr/learn/courses/30/lessons/172928) | 루드비코, 임현성 |
+| 2026-10-27 | [달리기 경주](https://school.programmers.co.kr/learn/courses/30/lessons/178871) | 루드비코, 임현성, kcnsmoothie, 모아 |
+| 2026-10-27 | [숫자 짝꿍](https://school.programmers.co.kr/learn/courses/30/lessons/131128) | 루드비코, 임현성 |
+
+<details>
+<summary>집계 기준과 자동 갱신</summary>
+
+- 문제 DB에 지정된 날짜와 참여자로 집계합니다.
+- 날짜는 서울 시간대 기준이며, 미래 기록은 풀이 통계에서 제외합니다.
+- 현재 연속 기록은 오늘 또는 어제까지 이어진 참여일을 셉니다.
+- GitHub Actions가 매시 17분과 47분에 노션 동기화와 이미지 갱신을 실행합니다.
+- 노션 토큰 등록 전에는 기존 스냅샷으로 표시합니다. 기록 동기화 시각을 확인해 주세요.
+
+[연결 설정과 로컬 실행](docs/setup.md)
+
+</details>
