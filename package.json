@@ -1,0 +1,1 @@
+{"name":"coding-grass","private":true,"type":"module","scripts":{"test":"node --test","sync":"node scripts/sync-notion.mjs","dev":"python3 -m http.server 4173 --bind 127.0.0.1"},"engines":{"node":">=22"}}

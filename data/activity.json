@@ -1,0 +1,151 @@
+{
+  "updatedAt": "2026-11-04T06:02:15.303Z",
+  "timezone": "Asia/Seoul",
+  "participants": [
+    {
+      "id": "member-266e2ba14556",
+      "name": "루드비코"
+    },
+    {
+      "id": "member-624907909853",
+      "name": "임현성"
+    },
+    {
+      "id": "member-0eeeb72abd91",
+      "name": "kcnsmoothie"
+    },
+    {
+      "id": "member-42425b1ff1ea",
+      "name": "모아"
+    }
+  ],
+  "problems": [
+    {
+      "id": "43165",
+      "title": "타겟 넘버",
+      "date": "2026-11-02T04:00:00.000Z",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/43165",
+      "tags": [
+        "DFS"
+      ],
+      "participants": [
+        "member-266e2ba14556",
+        "member-624907909853"
+      ]
+    },
+    {
+      "id": "43163",
+      "title": "단어 변환",
+      "date": "2026-11-03T12:34:00.000Z",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/43163",
+      "tags": [
+        "BFS"
+      ],
+      "participants": [
+        "member-266e2ba14556"
+      ]
+    },
+    {
+      "id": "1844",
+      "title": "게임 맵 최단거리",
+      "date": "2026-11-03T07:33:00.000Z",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/1844",
+      "tags": [
+        "BFS"
+      ],
+      "participants": [
+        "member-266e2ba14556",
+        "member-624907909853"
+      ]
+    },
+    {
+      "id": "43162",
+      "title": "네크워크",
+      "date": "2026-11-02T13:31:00.000Z",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/43162",
+      "tags": [
+        "DFS"
+      ],
+      "participants": [
+        "member-624907909853",
+        "member-266e2ba14556"
+      ]
+    },
+    {
+      "id": "389478",
+      "title": "택배 상자 꺼내기",
+      "date": "2026-11-02T12:11:00.000Z",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/389478",
+      "tags": [
+        "Simulation"
+      ],
+      "participants": [
+        "member-266e2ba14556",
+        "member-624907909853"
+      ]
+    },
+    {
+      "id": "131128",
+      "title": "숫자 짝꿍",
+      "date": "2026-10-26T16:00:00.000Z",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/131128",
+      "tags": [],
+      "participants": [
+        "member-266e2ba14556",
+        "member-624907909853"
+      ]
+    },
+    {
+      "id": "150370",
+      "title": "개인정보 수집 유효기간",
+      "date": "2026-10-30T08:20:00.000Z",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/150370",
+      "tags": [
+        "Implementation"
+      ],
+      "participants": [
+        "member-266e2ba14556",
+        "member-624907909853"
+      ]
+    },
+    {
+      "id": "178871",
+      "title": "달리기 경주",
+      "date": "2026-10-27T13:00:00.000Z",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/178871",
+      "tags": [],
+      "participants": [
+        "member-266e2ba14556",
+        "member-624907909853",
+        "member-0eeeb72abd91",
+        "member-42425b1ff1ea"
+      ]
+    },
+    {
+      "id": "172928",
+      "title": "공원산책",
+      "date": "2026-10-29T04:00:00.000Z",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/172928",
+      "tags": [
+        "Simulation"
+      ],
+      "participants": [
+        "member-266e2ba14556",
+        "member-624907909853"
+      ]
+    },
+    {
+      "id": "258712",
+      "title": "가장 많이 받은 선물",
+      "date": "2026-11-02T03:05:00.000Z",
+      "url": "https://school.programmers.co.kr/learn/courses/30/lessons/258712",
+      "tags": [
+        "Implementation"
+      ],
+      "participants": [
+        "member-266e2ba14556",
+        "member-624907909853"
+      ]
+    }
+  ]
+}

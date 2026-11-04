@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f7f2">
+  <meta name="description" content="함께 푼 문제, 꾸준히 쌓이는 기록. 코딩 테스트 스터디의 참여 기록을 살펴보세요.">
+  <title>Coding Grass — 함께 쌓는 기록</title>
+  <link rel="stylesheet" href="./style.css">
+  <script type="module" src="./app.js"></script>
+</head>
+<body>
+  <header class="topbar"><a class="brand" href="./"><span class="brand-icon">▦</span> coding grass</a><a class="source" href="https://github.com/HyoYoonNam/coding-grass" target="_blank" rel="noopener">GitHub ↗</a></header>
+  <main>
+    <section class="intro"><p class="eyebrow">OUR CODING JOURNAL</p><h1>한 문제씩,<br>함께 자라는 기록<span>.</span></h1><p class="subtitle">작은 풀이가 모여 꾸준함이 됩니다.</p><div class="sync"><span class="status-dot"></span><span id="sync-time" role="status">기록을 불러오고 있어요</span></div></section>
+    <section aria-labelledby="members-heading"><div class="section-head"><h2 id="members-heading">함께하는 사람들</h2><span id="member-count"></span></div><div id="members" class="members"></div></section>
+    <section class="dashboard" id="dashboard" hidden>
+      <div class="dashboard-head"><div><p class="eyebrow">PERSONAL RECORD</p><h2 id="person-name"></h2></div><p id="person-caption"></p></div>
+      <div id="stats" class="stats"></div>
+      <section class="panel"><div class="panel-head"><div><h3>풀이의 발자국</h3><p id="range-label"></p></div><div class="controls"><label class="sr-only" for="period">표시 기간</label><select id="period"><option value="12w">최근 12주</option><option value="year">연간</option></select><label class="sr-only" for="year">연도</label><select id="year" hidden></select></div></div>
+        <div class="heatmap-scroll"><div id="heatmap"></div></div>
+        <div class="heatmap-footer"><span>날짜를 선택하면 푼 문제를 볼 수 있어요</span><div class="legend"><span>적음</span><i data-level="0"></i><i data-level="1"></i><i data-level="2"></i><i data-level="3"></i><i data-level="4"></i><span>많음</span></div></div>
+      </section>
+      <div class="details-grid"><section class="panel"><div class="panel-head"><h3 id="list-title">최근 푼 문제</h3><button id="reset-date" class="text-button" hidden>전체 기록</button></div><div id="problem-list"></div></section><section class="panel types"><div class="panel-head"><h3>쌓아 온 유형</h3><span class="muted">전체 기록</span></div><div id="tag-list"></div><p class="note">문제에 기록된 날짜를 기준으로 집계해요.<br>같은 날 여러 문제를 풀면 잔디가 진해져요.</p></section></div>
+    </section>
+    <div id="error" class="panel" role="alert" hidden>기록을 불러오지 못했어요. 잠시 후 새로고침해 주세요.</div>
+  </main>
+  <footer><span>Small steps, growing together.</span><span>coding grass, Asia/Seoul</span></footer>
+</body></html>

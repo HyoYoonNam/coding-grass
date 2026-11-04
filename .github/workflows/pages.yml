@@ -1,0 +1,65 @@
+name: Sync and deploy Coding Grass
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+  schedule:
+    - cron: '17,47 * * * *'
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: coding-grass-pages
+  cancel-in-progress: false
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Test calendar calculations
+        run: npm test
+      - name: Check synchronization settings
+        id: config
+        env:
+          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+        run: |
+          if [ -n "$NOTION_TOKEN" ]; then
+            echo "enabled=true" >> "$GITHUB_OUTPUT"
+          elif [ "${{ github.event_name }}" = "schedule" ]; then
+            echo "::error::Set NOTION_TOKEN to enable automatic synchronization."
+            exit 1
+          else
+            echo "enabled=false" >> "$GITHUB_OUTPUT"
+            echo "::warning::Initial snapshot is being deployed. Add NOTION_TOKEN to enable synchronization."
+          fi
+      - name: Read current participation from Notion
+        if: steps.config.outputs.enabled == 'true'
+        env:
+          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+          NOTION_DATA_SOURCE_ID: 40c3a35c-b1a1-80fc-8706-000b241e5470
+        run: npm run sync
+      - name: Assemble static site
+        run: |
+          mkdir -p _site/data _site/lib
+          cp index.html app.js style.css _site/
+          cp lib/activity.js _site/lib/
+          cp data/activity.json _site/data/
+          touch _site/.nojekyll
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Publish GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
